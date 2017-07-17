@@ -1,0 +1,9 @@
+---
+- include: os.yaml
+  tags: osplay
+  #- include: undercloud.yaml
+  #tags: undercloudplay
+  #- include: overcloud.yaml
+  #tags: overcloudplay
+  #- include: postdeploy.yaml
+  #tags: postdeploy

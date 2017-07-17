@@ -1,0 +1,14 @@
+---
+[director]
+192.168.200.2
+
+[controllers]
+pod1-controller1 ansible_host=10.12.133.111 ipmi_address=10.12.30.11
+
+[computes]
+pod1-compute1 ansible_host=10.12.133.121 ipmi_address=10.12.30.14
+pod1-compute2 ansible_host=10.12.133.122 ipmi_address=10.12.30.15
+
+[osp:children]
+controllers
+computes
