@@ -1,0 +1,101 @@
+resource_registry:
+  OS::TripleO::Compute::Net::SoftwareConfig: /home/stack/templates/nic-configs/compute.yaml
+  OS::TripleO::Controller::Net::SoftwareConfig: /home/stack/templates/nic-configs/controller.yaml
+  OS::TripleO::Network::External: /usr/share/openstack-tripleo-heat-templates/network/external.yaml
+  OS::TripleO::Network::InternalApi: /usr/share/openstack-tripleo-heat-templates/network/internal_api.yaml
+  OS::TripleO::Network::Ports::ExternalVipPort: /usr/share/openstack-tripleo-heat-templates/network/ports/external.yaml
+  OS::TripleO::Network::Ports::InternalApiVipPort: /usr/share/openstack-tripleo-heat-templates/network/ports/internal_api.yaml
+  OS::TripleO::Controller::Ports::ExternalPort: /usr/share/openstack-tripleo-heat-templates/network/ports/external.yaml
+  OS::TripleO::Controller::Ports::InternalApiPort: /usr/share/openstack-tripleo-heat-templates/network/ports/internal_api.yaml
+  OS::TripleO::Networker::Ports::ExternalPort: /usr/share/openstack-tripleo-heat-templates/network/ports/external.yaml
+  OS::TripleO::Networker::Ports::InternalApiPort: /usr/share/openstack-tripleo-heat-templates/network/ports/internal_api.yaml
+  OS::TripleO::Compute::Ports::InternalApiPort: /usr/share/openstack-tripleo-heat-templates/network/ports/internal_api.yaml
+
+parameter_defaults:
+  ServiceNetMap:
+    NeutronTenantNetwork: internal_api
+    CinderIscsiNetwork: internal_api
+    GlanceApiNetwork: internal_api
+    KeystoneAdminApiNetwork: ctlplane # allows undercloud to config endpoints
+    NovaColdMigrationNetwork: ctlplane
+    SwiftStorageNetwork: internal_api
+    SwiftProxyNetwork: internal_api
+    #CephClusterNetwork: internal_api
+    #CephMonNetwork: internal_api
+    #CephRgwNetwork: internal_api
+    PublicNetwork: external
+    # We special-case the default ResolveNetwork for the CephStorage role
+    # for backwards compatibility, all other roles default to internal_api
+    #CephStorageHostnameResolveNetwork: internal_api
+
+
+    #NeutronTenantNetwork: internal_api
+    #CeilometerApiNetwork: internal_api
+    #AodhApiNetwork: internal_api
+    #GnocchiApiNetwork: internal_api
+    #MongoDbNetwork: internal_api
+    #CinderApiNetwork: internal_api
+    #CinderIscsiNetwork: internal_api
+    #GlanceApiNetwork: internal_api
+    #GlanceRegistryNetwork: internal_api
+    #KeystoneAdminApiNetwork: external
+    #KeystonePublicApiNetwork: internal_api
+    #NeutronApiNetwork: internal_api
+    #HeatApiNetwork: internal_api
+    #NovaApiNetwork: internal_api
+    #NovaMetadataNetwork: internal_api
+    #NovaVncProxyNetwork: internal_api
+    #SwiftMgmtNetwork: internal_api
+    #SwiftProxyNetwork: internal_api
+    #SaharaApiNetwork: internal_api
+    #HorizonNetwork: internal_api
+    #MemcachedNetwork: internal_api
+    #RabbitMqNetwork: internal_api
+    #RedisNetwork: internal_api
+    #MysqlNetwork: internal_api
+    #CephClusterNetwork: internal_api
+    #CephPublicNetwork: internal_api
+    #ControllerHostnameResolveNetwork: internal_api
+    #ComputeHostnameResolveNetwork: internal_api
+    #BlockStorageHostnameResolveNetwork: internal_api
+    #ObjectStorageHostnameResolveNetwork: internal_api
+    #CephStorageHostnameResolveNetwork: internal_api
+
+  # Networks and ranges
+  InternalApiNetCidr: 10.1.0.0/24
+  ExternalNetCidr: 192.168.200.0/24
+  InternalApiAllocationPools: [{'start': '10.1.0.21', 'end': '10.1.0.30'}]
+
+  # Leave room for floating IPs in the External allocation pool
+  ExternalAllocationPools: [{'start': '192.168.200.21', 'end': '192.168.200.30'}]
+
+  # Set to the router gateway on the external network
+  ExternalInterfaceDefaultRoute: '192.168.200.1'
+
+  # Netmask for control plane network
+  ControlPlaneSubnetCidr: '24'
+
+  # Gateway router for the provisioning network (or Undercloud IP)
+  ControlPlaneDefaultRoute: '172.16.1.1'
+
+  # The IP address of the EC2 metadata server. Generally the IP of the Undercloud
+  EC2MetadataIp: '172.16.1.2'
+
+  # External API access
+  PublicVirtualFixedIPs: [{'ip_address':'192.168.200.10'}]
+
+  # VLAN ID used by the networks
+  InternalApiNetworkVlanID: 1002
+  ExternalNetworkVlanID: 1003
+
+  # Set to "br-ex" if using floating IPs on native VLAN on bridge br-ex
+  NeutronExternalNetworkBridge: "''"
+
+  # Customize bonding options if required
+  #BondInterfaceOvsOptions: "lacp=active bond_mode=balance-tcp"
+
+  # Configure overcloud DNS
+  DnsServers: ['8.8.8.8']
+
+  NeutronNetworkVLANRanges: datacentre
+
