@@ -1,0 +1,10 @@
+parameter_defaults:
+  NeutronServicePlugins: "router,qos,trunk,neutron_lbaas.services.loadbalancer.plugin.LoadBalancerPluginv2"
+  ExtraConfig:
+    neutron::server::service_providers: ['LOADBALANCERV2:Haproxy:neutron_lbaas.drivers.haproxy.plugin_driver.HaproxyOnHostPluginDriver:default']
+    neutron::agents::lbaas::device_driver: ""
+    neutron::agents::lbaas::user_group: haproxy
+
+    neutron::config::lbaas_agent_config:
+      DEFAULT/interface_driver:
+        value: openvswitch
