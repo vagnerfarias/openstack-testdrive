@@ -18,8 +18,8 @@ parameter_defaults:
     GlanceApiNetwork: internal_api
     KeystoneAdminApiNetwork: ctlplane # allows undercloud to config endpoints
     NovaColdMigrationNetwork: ctlplane
-    SwiftStorageNetwork: internal_api
-    SwiftProxyNetwork: internal_api
+    #SwiftStorageNetwork: internal_api
+    #SwiftProxyNetwork: internal_api
     #CephClusterNetwork: internal_api
     #CephMonNetwork: internal_api
     #CephRgwNetwork: internal_api
