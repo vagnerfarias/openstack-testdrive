@@ -1,0 +1,35 @@
+heat_template_version: 2014-10-16
+
+description: >
+  Post-deployment Fixes
+
+parameters:
+  servers:
+    type: json
+
+resources:
+
+  ExtraConfig:
+    type: OS::Heat::SoftwareConfig
+    properties:
+      group: script
+      config: |
+          #!/usr/bin/env bash
+          set -e
+          if [[ `hostname` = *"controller"* ]]
+          then
+            #truncate -s 10000M /var/lib/cinder/cinder-volumes-backing-file
+            echo "losetup /dev/loop0 /var/lib/cinder/cinder-volumes-backing-file" >> /etc/rc.d/rc.local
+            echo "vgscan" >> /etc/rc.d/rc.local
+            chmod +x /etc/rc.d/rc.local
+            /usr/bin/systemctl enable neutron-lbaasv2-agent.service
+            /usr/bin/systemctl start neutron-lbaasv2-agent.service
+          fi
+
+  ExtraDeployments:
+    type: OS::Heat::SoftwareDeployments
+    properties:
+      name: ExtraDeployments
+      servers:  {get_param: servers}
+      config: {get_resource: ExtraConfig}
+      actions: ['CREATE'] # Only do this on CREATE
