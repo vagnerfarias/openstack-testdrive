@@ -1,0 +1,4 @@
+- name: download cirros image
+  get_url: 
+    url: "{{ cirros_url|default('http://download.cirros-cloud.net/0.3.5/cirros-0.3.5-x86_64-disk.img') }}"
+    dest: "{{ download_dir|default('/tmp') }}"
