@@ -1,0 +1,19 @@
+---
+- name: create initial tenant
+  shell: source ~/templates/overcloudrc && openstack project create {{ tenant_name|default('test-drive') }}
+  become: yes
+  become_user: stack
+- name: create initial user
+  shell: source ~/templates/overcloudrc && openstack user create --password {{ user_passwd|default('r3dh4t!') }} --project {{ tenant_name|default('test-drive') }} {{ user_name|default('user0') }}
+  become: yes
+  become_user: stack
+
+- name: create project private network
+  shell: source ~/templates/overcloudrc && openstack network create private
+  become: yes
+  become_user: stack
+
+- name: create m1.tiny flavor
+  shell: source ~/templates/overcloudrc && openstack flavor create --id 1 --ram 512 --disk 1 --vcpus 1 --public m1.tiny
+  become: yes
+  become_user: stack

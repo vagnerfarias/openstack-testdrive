@@ -1,0 +1,23 @@
+---
+- name: delete m1.tiny flavor
+  shell: source ~/templates/overcloudrc && openstack flavor delete m1.tiny
+  become: yes
+  become_user: stack
+
+- name: delete project private network
+  shell: source ~/templates/overcloudrc && openstack network delete private
+  become: yes
+  become_user: stack
+
+- name: delete initial user
+  shell: source ~/templates/overcloudrc && openstack user delete {{ user_name|default('user0') }}
+  become: yes
+  become_user: stack
+
+- name: delete initial tenant
+  shell: source ~/templates/overcloudrc && openstack project delete {{ tenant_name|default('test-drive') }}
+  become: yes
+  become_user: stack
+
+
+

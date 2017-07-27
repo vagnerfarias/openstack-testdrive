@@ -1,0 +1,8 @@
+---
+## playbook to deploy an openstack director server
+
+- name: configure the openstack director server and deploy the overcloud
+  hosts: director
+  remote_user: root
+  roles:
+    - ../roles/overcloud-cleanup

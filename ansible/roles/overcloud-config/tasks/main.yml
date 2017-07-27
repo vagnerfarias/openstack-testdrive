@@ -1,0 +1,3 @@
+---
+- include: postdeploy.yaml
+  tags: postdeploy
