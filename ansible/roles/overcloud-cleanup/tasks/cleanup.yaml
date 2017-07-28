@@ -1,4 +1,14 @@
 ---
+- name: delete cirros image from overcloud glance
+  shell: source ~/templates/overcloudrc && openstack image delete cirros
+  become: yes
+  become_user: stack
+
+- name: delete cirros image from ospd disk
+  file: 
+    path: /home/stack/cirros-0.3.5-x86_64-disk.img
+    state: absent
+
 - name: delete m1.tiny flavor
   shell: source ~/templates/overcloudrc && openstack flavor delete m1.tiny
   become: yes
