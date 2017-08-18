@@ -1,4 +1,9 @@
 ---
+- name: setup cinder backend type
+  shell: source ~/templates/overcloudrc && openstack volume type delete standard
+  become: yes
+  become_user: stack
+
 - name: delete cirros image from overcloud glance
   shell: source ~/templates/overcloudrc && openstack image delete cirros
   become: yes

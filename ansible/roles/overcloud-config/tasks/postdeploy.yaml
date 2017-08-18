@@ -39,3 +39,8 @@
   become: yes
   become_user: stack
 
+- name: setup cinder backend type
+  shell: source ~/templates/overcloudrc && openstack volume type create --property volume_backend_name=tripleo_iscsi standard
+  become: yes
+  become_user: stack
+
