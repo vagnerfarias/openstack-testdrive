@@ -19,7 +19,7 @@ resources:
           if [[ `hostname` = *"controller"* ]]
           then
             #truncate -s 10000M /var/lib/cinder/cinder-volumes-backing-file
-            echo "losetup /dev/loop0 /var/lib/cinder/cinder-volumes-backing-file" >> /etc/rc.d/rc.local
+            echo "losetup /dev/loop0 /var/lib/cinder/cinder-volumes" >> /etc/rc.d/rc.local
             echo "vgscan" >> /etc/rc.d/rc.local
             chmod +x /etc/rc.d/rc.local
             /usr/bin/systemctl enable neutron-lbaasv2-agent.service
