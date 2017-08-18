@@ -14,13 +14,18 @@
   become: yes
   become_user: stack
 
+- name: delete project private subnet
+  shell: source ~/templates/overcloudrc && openstack subnet delete private-subnet
+  become: yes
+  become_user: stack
+
 - name: delete project private network
   shell: source ~/templates/overcloudrc && openstack network delete private
   become: yes
   become_user: stack
 
 - name: delete initial user
-  shell: source ~/templates/overcloudrc && openstack user delete {{ user_name|default('user0') }}
+  shell: source ~/templates/overcloudrc && openstack user delete {{ user_name|default('td-user') }}
   become: yes
   become_user: stack
 

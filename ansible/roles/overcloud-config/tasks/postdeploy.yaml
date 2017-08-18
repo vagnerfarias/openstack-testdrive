@@ -4,7 +4,7 @@
   become: yes
   become_user: stack
 - name: create initial user
-  shell: source ~/templates/overcloudrc && openstack user create --password {{ user_passwd|default('r3dh4t!') }} --project {{ tenant_name|default('test-drive') }} {{ user_name|default('user0') }}
+  shell: source ~/templates/overcloudrc && openstack user create --password {{ user_passwd|default('r3dh4t!') }} --project {{ tenant_name|default('test-drive') }} {{ user_name|default('td-user') }}
   become: yes
   become_user: stack
 - name: set admin user to admin role on project {{ tenant_name|default('test-drive') }} 
@@ -14,6 +14,11 @@
 
 - name: create project private network
   shell: source ~/templates/overcloudrc && openstack network create --os-project-name {{ tenant_name|default('test-drive') }} private
+  become: yes
+  become_user: stack
+
+- name: create project private subnet
+  shell: source ~/templates/overcloudrc && openstack subnet create --os-project-name {{ tenant_name|default('test-drive') }} --subnet-range 10.10.10.0/24 --network private --allocation-pool start=10.10.10.100,end=10.10.10.200 private-subnet
   become: yes
   become_user: stack
 
