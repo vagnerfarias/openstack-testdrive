@@ -19,6 +19,10 @@ parameter_defaults:
   ## Gnocchi backend can be either 'rbd' (Ceph), 'swift' or 'file'.
   GnocchiBackend: file
 
+  #### CINDER ISCSI SETTINGS ####
+  # Loop device size in MB
+  CinderLVMLoopDeviceSize: 102400 
+
 
   #### CINDER NFS SETTINGS ####
 
