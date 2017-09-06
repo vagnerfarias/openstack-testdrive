@@ -2,3 +2,7 @@ parameter_defaults:
   HostnameMap:
     overcloud-controller-0: controller
     overcloud-compute-0: compute-1
+    overcloud-compute-1: compute-2
+
+  NovaComputeSchedulerHints:
+    'capabilities:node': 'novacompute-%index%'
