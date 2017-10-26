@@ -1,0 +1,65 @@
+# Use this environment to pass in certificates for SSL deployments.
+# For these values to take effect, one of the tls-endpoints-*.yaml environments
+# must also be used.
+parameter_defaults:
+  SSLCertificate: |
+    -----BEGIN CERTIFICATE-----
+    MIIEtDCCApygAwIBAgICEAAwDQYJKoZIhvcNAQELBQAwbzELMAkGA1UEBhMCQlIx
+    EjAQBgNVBAgMCVNhbyBQYXVsbzESMBAGA1UEBwwJU2FvIFBhdWxvMRAwDgYDVQQK
+    DAdSZWQgSGF0MRIwEAYDVQQLDAlMQVRBTS1TTUUxEjAQBgNVBAMMCXRlc3Rkcml2
+    ZTAeFw0xNzEwMjQxOTAzMzlaFw0yNzEwMjIxOTAzMzlaMGAxCzAJBgNVBAYTAkJS
+    MRIwEAYDVQQIDAlTYW8gUGF1bG8xEDAOBgNVBAoMB1JlZCBIYXQxEjAQBgNVBAsM
+    CUxBVEFNLVNNRTEXMBUGA1UEAwwOMTkyLjE2OC4yMDAuMTAwggEiMA0GCSqGSIb3
+    DQEBAQUAA4IBDwAwggEKAoIBAQDIEhto088xydH1VDI3oMvZf+E6ywgYy2W/+aHX
+    nOR6ePf8frxWai0N2lXIcRwW1Zur/zKY0vYQQFtN2lrz0KKKjwCTnSs5wLU8U9l5
+    xfRn9/JDwygvsmpUc/z3b3S0L+Tn2xaxyK4U3P2FKCtOOACFCk5MHUia0K2t1Mvc
+    xOrMGEuF0P2vyN+fnDoT818BZaAiNkK5IynNvnEUF+FI0C3SWJmN9NonyyVmmiJ0
+    pErFWUTQqc8hERNfmRDl3kxf+C+2AfVXdT2IQoaXjVNipHBwCc6NvmPz6OcTmMIY
+    oB50A5m1aEiuBEV5QxkUezvJ2+rDsi7CU8MoySA0cChrpJ0pAgMBAAGjaTBnMAkG
+    A1UdEwQCMAAwCwYDVR0PBAQDAgXgME0GA1UdEQRGMESHBMCoyAqCDjE5Mi4xNjgu
+    MjAwLjEwghVvdmVyY2xvdWQuZXhhbXBsZS5jb22CFW92ZXJjbG91ZC5sb2NhbGRv
+    bWFpbjANBgkqhkiG9w0BAQsFAAOCAgEAE3TiloCXNlMUbWHf6pFpTTV0Y9G5ZTru
+    wZg01AKOiPKSfzJHsyRZiu7G4M7VZa6+oCnJ7M9Nm5Iilp6trgaxvqdjvtMUJk3u
+    59ihetvogw4SdjZo8xgPeGU+fNELNMtUZQXeIq11tQUbEvT0qJovCYhKbXZQQg+M
+    0rw2gi0yomfV+8GK2aoEHhoBuGIwkH/MqisKrjfnhiVj4aKGA7gBzAtI2+43uWm2
+    W3CEk3x4Bc+2vzu4dKbtFhb7Gh/CxTBoSAt3Km7qQeW9YYxDl33ajwbJ9byMxSal
+    Pj5Ooi+cV3vw8gq1oew9dXcF8nMw+AFVP/DreqHmKU3ZpRkpLkQ0V+1M8s4VVbMe
+    6B+XG/1mwmE6xmIHdXgq2oyFnfZjlVLg4R13UeGOlDvLGz1mOGCFhNCk1QYT+L6r
+    bCqyyCATNo2cDsQ20hPQ39kwJzozj+6W0deX7y7aAx66TUnvg8VbfM0Pv9O1aW2j
+    3xKR2oiJH0FyeIMilofYz/oxaI0mke0uZ4ENrZGOhzTq6WrzzQ89XdSoEtrqMZ3L
+    UNNZprOAG+hjSXi0+KFQTO7PYJ7b9WkV8BNtsDMeTvZgSPmhSWdV0XbsTNgRHqcc
+    q/OdINsTA2+akm6ZrWOosF08Shu/Tr8dQv8xfhSENt1W7/4tJagsdTqoM2fbPYSD
+    iGe+LeZI/Js=
+    -----END CERTIFICATE-----
+  SSLIntermediateCertificate: ''
+  SSLKey: |
+    -----BEGIN RSA PRIVATE KEY-----
+    MIIEpAIBAAKCAQEAyBIbaNPPMcnR9VQyN6DL2X/hOssIGMtlv/mh15zkenj3/H68
+    VmotDdpVyHEcFtWbq/8ymNL2EEBbTdpa89Ciio8Ak50rOcC1PFPZecX0Z/fyQ8Mo
+    L7JqVHP89290tC/k59sWsciuFNz9hSgrTjgAhQpOTB1ImtCtrdTL3MTqzBhLhdD9
+    r8jfn5w6E/NfAWWgIjZCuSMpzb5xFBfhSNAt0liZjfTaJ8slZpoidKRKxVlE0KnP
+    IRETX5kQ5d5MX/gvtgH1V3U9iEKGl41TYqRwcAnOjb5j8+jnE5jCGKAedAOZtWhI
+    rgRFeUMZFHs7ydvqw7IuwlPDKMkgNHAoa6SdKQIDAQABAoIBAQCLlr6S8/0CstoP
+    ffAPidvQY32khJWgnwDd4XC+u5NZs97pxw7mh+vpV2U0lV5QvDaB2WrW35GYox5R
+    AkElDXLqk32GgEjxYXfRoHsCkE/G3mKkTpxSMvwm8koT5SqasTPXZK+/2NFEcy9a
+    4TzdtQr/x8H7Lw9CHMigmPCnlqhvPmQx8E5wEo7EoUc/e0nTLzbkGxZbh0VUtD1H
+    E+nCRvoA64dg34sjCOLcDkOCUIQHUx0f0+Ze19gcAAlZQXbvBxSmg0fVRPkuAObl
+    Bb6NP1eDnL0JaqsROe1BK5vJMAfNEsIcyLn2YiSGXdVoQnh3uaeKG5jqRXJqWEOK
+    c+nJkZV1AoGBAOnekhbWt6Hci6YZuC6Hi6w9AKtpKKQ/TgLl9ggROd5o8sK/2iCS
+    GI9ZpzFTJ/FT9ePXG2SFD0gHWSywHzBxrvEsQcYrVDyKGX/UC1N/CWdISkSmt7f1
+    C3m6D0+/ChELu+QrH8ocNaPPmW8vh0D4QnCUf5blhnGLuaFbYXw6MnrrAoGBANsA
+    xYJGzTlD4nwW1mZqrFFAbcsvuJY1AKcWzpjQekPKFvraUMkrE3jWQqREzsbl7f/z
+    LHXv3llq+2JKb0mdA/ZbQnVMaAx4Yn9djsc1QHpzWIqlbYoYmiaPNOmO7+OUNyn6
+    iDyk9xxLJjgLZPItytygnuTj1mmu9hm52QIDQps7AoGARcOtVL7MnK5Lwkrd1JN+
+    qOyxrHB8PTLdNKQg1ps85gnskQfmK90pEmouI9qoiacALO1YMI441sXKZjhLtYnU
+    JAGNxW3bfQu9O5Knpkq5JWQ9M2mAWJHy0Gcedi2I9TjI3fG3U/VCUxF0teQ5trnY
+    J/lEbmEdz/VcdLPrysEZme0CgYAd9UQPZyoJrFyeBu27QtphnwOl6NhCS+vT743B
+    X7tp7IoqNJUaf7cBL6YcHIGAudFN0vEBDRgIeVb8AhypID57g85ah2IwWoN20tCG
+    NaWlWoQBK1IJswXbQnnFfVUZd5v4NRpP2W0oRKtsvTpI2rTGa35w5y3cdR+bM04Z
+    NWL2IwKBgQC5T/lYpGRgwl6F8JpTaQU1/AAUak6lkeal/WJ/HU5nfnfp2E57v4/w
+    iQplcL1+NCDdOx6l/lAq0Z2h8lWG1i4N2N//DKm4PElYzWV5KokfstSg8sa7HbIG
+    4PYPKDx1+U3ATaDeOuK2XoOr5Qz7YMkHrjtzIMrShn6OHDsTU+liXQ==
+    -----END RSA PRIVATE KEY-----
+
+resource_registry:
+  OS::TripleO::NodeTLSData: /usr/share/openstack-tripleo-heat-templates/puppet/extraconfig/tls/tls-cert-inject.yaml
