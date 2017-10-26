@@ -57,16 +57,16 @@
   - ospdcfg
 
 ## create stack user (password decrypts to P@ssw0rd)
-- name: create stack user
-  user:
-    name: stack
-    shell: /bin/bash
-    password: $6$rounds=656000$47cizb4beOY.uB9c$wTlFCrP62g/M0.UNl0IHLOOw.fuWvJwCQLLS8UeruI1T/tbAdKd8Wzhsy7SandrOtROwBn7FBZHTaZcZciXMd/
-    generate_ssh_key: yes
-    ssh_key_bits: 2048
-    ssh_key_file: .ssh/id_rsa
-  tags:
-  - stackuser
+# - name: create stack user
+#   user:
+#     name: stack
+#     shell: /bin/bash
+#     password: $6$rounds=656000$47cizb4beOY.uB9c$wTlFCrP62g/M0.UNl0IHLOOw.fuWvJwCQLLS8UeruI1T/tbAdKd8Wzhsy7SandrOtROwBn7FBZHTaZcZciXMd/
+#     generate_ssh_key: yes
+#     ssh_key_bits: 2048
+#     ssh_key_file: .ssh/id_rsa
+#   tags:
+#   - stackuser
 - name: grant sudo to stack
   copy:
     src: stack.sudo
