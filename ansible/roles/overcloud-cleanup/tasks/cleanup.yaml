@@ -30,7 +30,7 @@
   become_user: stack
 
 - name: delete initial user
-  shell: source ~/templates/overcloudrc && openstack user delete {{ user_name|default('td-user') }}
+  shell: source ~/templates/overcloudrc && openstack user delete {{ user_name|default('td-user') }} && openstack user delete {{ admin_name|default('td-admin') }}
   become: yes
   become_user: stack
 
