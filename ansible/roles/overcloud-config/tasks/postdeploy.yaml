@@ -27,6 +27,11 @@
   become: yes
   become_user: stack
 
+- name: create router
+  shell: source ~/templates/overcloudrc && openstack router create --project {{ tenant_name|default('test-drive') }} td-router && openstack router add subnet td-router private-subnet
+  become: yes
+  become_user: stack
+
 - name: create m1.tiny flavor
   shell: source ~/templates/overcloudrc && openstack flavor create --id 1 --ram 512 --disk 1 --vcpus 1 --public m1.tiny
   become: yes

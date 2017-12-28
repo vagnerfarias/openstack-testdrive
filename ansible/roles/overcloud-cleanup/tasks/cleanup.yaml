@@ -19,6 +19,11 @@
   become: yes
   become_user: stack
 
+- name: delete router
+  shell: source ~/templates/overcloudrc && openstack router remove subnet td-router private-subnet && openstack router delete td-router
+  become: yes
+  become_user: stack
+
 - name: delete project private subnet
   shell: source ~/templates/overcloudrc && openstack subnet delete private-subnet
   become: yes
