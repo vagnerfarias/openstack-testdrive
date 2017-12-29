@@ -1,56 +1,49 @@
 ---
 - name: create initial tenant
   shell: source ~/templates/overcloudrc && openstack project create {{ tenant_name|default('test-drive') }}
-  become: yes
-  become_user: stack
+  #become: yes
+  #become_user: stack
 - name: create initial user
   shell: source ~/templates/overcloudrc && openstack user create --password {{ user_passwd|default('r3dh4t!') }} --project {{ tenant_name|default('test-drive') }} {{ user_name|default('td-user') }} && openstack user create --password {{ admin_passwd|default('r3dh4t!') }} --project {{ tenant_name|default('test-drive') }} {{ admin_name|default('td-admin') }}
-  become: yes
-  become_user: stack
+  #become: yes
+  #become_user: stack
 - name: set admin role on project {{ tenant_name|default('test-drive') }} 
   shell: source ~/templates/overcloudrc && openstack role add --project {{ tenant_name|default('test-drive') }} --user admin admin && openstack role add --project {{ tenant_name|default('test-drive') }} --user {{ admin_name|default('td-admin') }} admin
-  become: yes
-  become_user: stack
+  #become: yes
+  #become_user: stack
 
 - name: include rule to accept icmp in default security group
   shell: source ~/templates/overcloudrc && openstack security group rule create --protocol icmp $(openstack security group list --project {{ tenant_name|default('test-drive') }} -f value -c ID)
-  become: yes
-  become_user: stack
+  #become: yes
+  #become_user: stack
 
 - name: create project private network
   shell: source ~/templates/overcloudrc && openstack network create --os-project-name {{ tenant_name|default('test-drive') }} private
-  become: yes
-  become_user: stack
+  #become: yes
+  #become_user: stack
 
 - name: create project private subnet
   shell: source ~/templates/overcloudrc && openstack subnet create --os-project-name {{ tenant_name|default('test-drive') }} --subnet-range 10.10.10.0/24 --network private --allocation-pool start=10.10.10.100,end=10.10.10.200 private-subnet
-  become: yes
-  become_user: stack
+  #become: yes
+  #become_user: stack
 
 - name: create router
   shell: source ~/templates/overcloudrc && openstack router create --project {{ tenant_name|default('test-drive') }} td-router && openstack router add subnet td-router private-subnet
-  become: yes
-  become_user: stack
+  #become: yes
+  #become_user: stack
 
 - name: create m1.tiny flavor
   shell: source ~/templates/overcloudrc && openstack flavor create --id 1 --ram 512 --disk 1 --vcpus 1 --public m1.tiny
-  become: yes
-  become_user: stack
-
-- name: copy cirros image to ospd
-  copy:
-    src: /tmp/cirros-0.3.5-x86_64-disk.img
-    dest: /home/stack/
-    owner: stack
-    group: stack
+  #become: yes
+  #become_user: stack
 
 - name: upload cirros image to overcloud glance
   shell: source ~/templates/overcloudrc && openstack image create --container-format bare --disk-format qcow2 --file /home/stack/cirros-0.3.5-x86_64-disk.img --public cirros
-  become: yes
-  become_user: stack
+  #become: yes
+  #become_user: stack
 
 - name: setup cinder backend type
   shell: source ~/templates/overcloudrc && openstack volume type create --property volume_backend_name=tripleo_iscsi standard
-  become: yes
-  become_user: stack
+  #become: yes
+  #become_user: stack
 

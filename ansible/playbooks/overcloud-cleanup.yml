@@ -3,6 +3,6 @@
 
 - name: configure the openstack director server and deploy the overcloud
   hosts: director
-  remote_user: root
+  remote_user: stack
   roles:
     - ../roles/overcloud-cleanup

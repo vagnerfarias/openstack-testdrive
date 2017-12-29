@@ -1,5 +1,6 @@
 ---
 - name: run tasks on ansible host
-  hosts: 127.0.0.1
+  hosts: director
+  remote_user: stack
   roles:
     - ../roles/preparation
