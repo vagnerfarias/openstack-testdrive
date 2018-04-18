@@ -13,7 +13,7 @@
   #become_user: stack
 
 - name: include rule to accept icmp in default security group
-  shell: source ~/templates/overcloudrc && openstack security group rule create --protocol icmp $(openstack security group list --project {{ tenant_name|default('test-drive') }} -f value -c ID)
+  shell: source ~/templates/overcloudrc && openstack security group rule create --project {{ tenant_name|default('test-drive') }} --protocol icmp $(openstack security group list --project {{ tenant_name|default('test-drive') }} -f value -c ID)
   #become: yes
   #become_user: stack
 
